@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 
-export function FieldDemo() {
+export function Inputfield() {
   return (
     <div className="w-full max-w-md">
       <form>
