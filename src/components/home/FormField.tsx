@@ -22,10 +22,10 @@ const FormField = () => {
             <FieldDescription>Input Role for adding to the list</FieldDescription>
             <FieldGroup>
               <Field>
-                <FieldLabel htmlFor="checkout-7j9-card-name-43j">Name on Card</FieldLabel>
+                <FieldLabel htmlFor="checkout-7j9-card-name-43j">Role</FieldLabel>
                 <Input
                   id="checkout-7j9-card-name-43j"
-                  placeholder="Evil Rabbit"
+                  placeholder="Input Role here..."
                   required
                 />
               </Field>
