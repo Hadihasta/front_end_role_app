@@ -14,9 +14,8 @@ const SkeletonTemplate = ({ count }: SkeletonTemplateProps) => {
     <>
       <motion.div
         animate={{
-          scale: [1, 2, 2, 1, 1],
-          rotate: [0, 0, 180, 180, 0],
-          borderRadius: ['0%', '0%', '50%', '50%', '0%'],
+          scale: [0, 1, 1, 1],
+
         }}
         transition={{
           duration: 2,
@@ -25,14 +24,8 @@ const SkeletonTemplate = ({ count }: SkeletonTemplateProps) => {
           repeat: Infinity,
           repeatDelay: 1,
         }}
-         style={{
-                width: 100,
-                height: 100,
-                backgroundColor: "red",
-                borderRadius: 5,
-            }}
-      />
-      <ScrollArea className="h-72 w-150 rounded-md border ">
+      >
+      <ScrollArea className=" h-72 w-150 rounded-md border">
         <h4 className="mb-4 text-xl leading-none font-medium">
           <Skeleton className="h-4  ml-2  w-[200px]" />
         </h4>
@@ -43,6 +36,7 @@ const SkeletonTemplate = ({ count }: SkeletonTemplateProps) => {
           </React.Fragment>
         ))}
       </ScrollArea>
+      </motion.div>
     </>
   )
 }
