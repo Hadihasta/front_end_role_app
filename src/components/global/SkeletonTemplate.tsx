@@ -1,18 +1,31 @@
-
 'use client'
 import { Skeleton } from '../ui/skeleton'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { Separator } from '@/components/ui/separator'
 
 import React from 'react'
 
-const SkeletonTemplate = () => {
+interface SkeletonTemplateProps {
+  count: number
+}
+
+const SkeletonTemplate = ({ count }: SkeletonTemplateProps) => {
   return (
-     <div className="flex items-center space-x-4">
-      <Skeleton className="h-12 w-12 rounded-full" />
-      <div className="space-y-2">
-        <Skeleton className="h-4 w-[250px]" />
-        <Skeleton className="h-4 w-[200px]" />
-      </div>
-    </div>
+    <>
+      {
+        <ScrollArea className="h-72 w-150 rounded-md border">
+          <h4 className="mb-4 text-xl leading-none font-medium">
+            <Skeleton className="h-4  ml-2 mt-2 w-[200px]" />
+          </h4>
+          {Array.from({ length: count }).map((_, index) => (
+            <React.Fragment key={index}>
+              <Skeleton className="h-4 ml-2 w-full" />
+              <Separator className="my-2" />
+            </React.Fragment>
+          ))}
+        </ScrollArea>
+      }
+    </>
   )
 }
 
