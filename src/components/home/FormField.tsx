@@ -31,7 +31,7 @@ const FormField = () => {
               </Field>
             </FieldGroup>
           </FieldSet>
-          {/* <FieldSeparator /> */}
+          <FieldSeparator />
 
           <Field orientation="horizontal">
             <Button type="submit">Submit</Button>

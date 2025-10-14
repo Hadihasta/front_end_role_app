@@ -12,6 +12,7 @@ interface Role {
 
 export default function Home() {
   const [roleMaster, setroleMaster] = useState<Role[]>([])
+  
 
   const fetchData = async () => {
     try {

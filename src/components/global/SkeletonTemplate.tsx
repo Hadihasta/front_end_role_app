@@ -13,13 +13,13 @@ const SkeletonTemplate = ({ count }: SkeletonTemplateProps) => {
   return (
     <>
       {
-        <ScrollArea className="h-72 w-150 rounded-md border">
+        <ScrollArea className="h-72 w-150 rounded-md border ">
           <h4 className="mb-4 text-xl leading-none font-medium">
-            <Skeleton className="h-4  ml-2 mt-2 w-[200px]" />
+            <Skeleton className="h-4  ml-2  w-[200px]" />
           </h4>
           {Array.from({ length: count }).map((_, index) => (
-            <React.Fragment key={index}>
-              <Skeleton className="h-4 ml-2 w-full" />
+            <React.Fragment key={index} >
+              <Skeleton className="h-4 ml-2 w-full " />
               <Separator className="my-2" />
             </React.Fragment>
           ))}
