@@ -1,5 +1,23 @@
+'use client'
 import FormField from '@/components/home/FormField'
-import RoleList from '@/components/home/RoleList'
+import dynamic from 'next/dynamic'
+import Skeleton from '@/components/global/Skeleton'
+
+//disable eslint for the next line
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+const RoleList = dynamic(() => 
+  new Promise<{ default: React.ComponentType<any> }>((resolve) => {
+    setTimeout(() => {
+      resolve(import('@/components/home/RoleList'))
+    }, 2000)
+  }),
+  {
+    loading: () => <Skeleton />,
+    ssr: false,
+  }
+)
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 export default function Home() {
   return (
