@@ -20,11 +20,23 @@ const RoleList = ({ data , loadingNew}: RoleListProps) => {
   const scrollRef = useRef<HTMLDivElement | null>(null)
 
   // Scroll otomatis ke bawah setiap kali ada data baru
+  // useEffect(() => {
+  //   if (scrollRef.current) {
+
+  //     scrollRef.current.scrollTop = 100000
+  //     console.log(scrollRef.current, "here")
+  //   }
+  // }, [data.length])
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
-    }
-  }, [data.length])
+  const viewport = scrollRef.current?.querySelector('[data-radix-scroll-area-viewport]')
+    if (viewport) {
+    const el = viewport as HTMLDivElement;
+    el.scrollTo({
+      top: el.scrollHeight,
+      behavior: 'smooth',
+    });
+  }
+}, [data.length])
  
   return (
     // if props is objct or array use JSON.stringify to display it

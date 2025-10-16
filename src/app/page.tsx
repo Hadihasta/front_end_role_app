@@ -55,7 +55,6 @@ export default function Home() {
     setLoading(true)
 
     const tempRole: Role = { id: Date.now(), role_name }
-    console.log(tempRole)
         setTimeout(() => {
 
         setroleMaster((prev) => [...prev, tempRole])
