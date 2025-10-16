@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
-import axios from '@/lib/axios'
+// import axios from '@/lib/axios'
 
 import {
   Field,
@@ -18,23 +18,22 @@ interface FormFieldProps {
   onAddRole: (role: string) => void
 }
 
-const sendFormData = async (role: string) => {
-  try {
-    const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/role`, { role_name: role })
-    console.log('Response:', res.data)
-  } catch (error) {
-    console.log(error)
-  }
-}
+// const sendFormData = async (role: string) => {
+//   try {
+//     const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/role`, { role_name: role })
+//     console.log('Response:', res.data)
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
 
 const FormField = ({ onAddRole }: FormFieldProps) => {
   const [role, setRole] = useState<string>('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault() // prevent page reload
-    sendFormData(role)
+    // sendFormData(role)
     onAddRole(role)
-    console.log('Submitted role:', role)
     setRole('') // clear the input after submit
   }
 
