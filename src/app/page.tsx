@@ -12,6 +12,7 @@ interface Role {
 
 export default function Home() {
   const [roleMaster, setroleMaster] = useState<Role[]>([])
+    const [loading, setLoading] = useState(false)
   
 
   const fetchData = async () => {
@@ -31,6 +32,29 @@ export default function Home() {
   //disable eslint for the next line
   /* eslint-disable @typescript-eslint/no-explicit-any */
 
+
+  const addRole = async(role_name: string) => { 
+    setLoading(true)
+
+
+      const tempRole: Role = { id: Date.now(), role_name}
+      setroleMaster((prev) => [...prev, tempRole])
+
+      try {
+          const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/role`, { role_name })
+      // replace dummy dengan hasil API (kalau ID beda)
+      setroleMaster((prev) =>
+        prev.map((r) => (r.id === tempRole.id ? res.data : r))
+      )
+          
+      } catch (error) {
+        console.log(error)
+      } finally {
+      setLoading(false)
+    }
+  }
+
+
   const RoleList = dynamic(
     () =>
       new Promise<{ default: React.ComponentType<any> }>((resolve) => {
@@ -48,8 +72,8 @@ export default function Home() {
   return (
     <>
       <div className=" flex flex-col font-sans items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 ">
-        <RoleList data={roleMaster} />
-        <FormField />
+        <RoleList data={roleMaster} loadingNew={loading} />
+      <FormField onAddRole={addRole} />
       </div>
     </>
   )
