@@ -14,27 +14,27 @@ import {
 } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 
+interface FormFieldProps {
+  onAddRole: (role: string) => void
+}
 
 const sendFormData = async (role: string) => {
   try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/role`, { role_name: role })
-      console.log('Response:', res.data)
+    const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/role`, { role_name: role })
+    console.log('Response:', res.data)
   } catch (error) {
     console.log(error)
   }
 }
 
-const FormField = () => {
+const FormField = ({ onAddRole }: FormFieldProps) => {
   const [role, setRole] = useState<string>('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault() // prevent page reload
     sendFormData(role)
-    
+    onAddRole(role)
     console.log('Submitted role:', role)
-
-    // you can also do something with the value here:
-    // e.g. send to backend or dispatch Redux action
     setRole('') // clear the input after submit
   }
 
@@ -48,7 +48,7 @@ const FormField = () => {
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="checkout-7j9-card-name-43j">Role</FieldLabel>
-                   <Input
+                <Input
                   id="role-input"
                   name="role"
                   placeholder="Input Role here..."
@@ -62,7 +62,7 @@ const FormField = () => {
           <FieldSeparator />
 
           <Field orientation="horizontal">
-               <Button type="submit">Submit</Button>
+            <Button type="submit">Submit</Button>
             <Button
               variant="outline"
               type="button"
